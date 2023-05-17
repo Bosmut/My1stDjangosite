@@ -32,7 +32,11 @@ def testing(request):
 def forloops(request):
     template = loader.get_template('djangoloops.html')
     mymembers = Member.objects.all().values()
+    mymembersfnlist = []
+    mymembersfnlist = [member['firstname'] for member in mymembers]
     context = {
-        'mymembers': mymembers
+        'mymembers': mymembers,
+        'mymembersfnlist': mymembersfnlist
     }
     return HttpResponse(template.render(context, request))
+

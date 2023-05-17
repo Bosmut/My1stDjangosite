@@ -44,9 +44,14 @@
     {% else %}
       <li>No member</li>
   {% endif %} 
-  
   {% endfor %}
 
+  <h2>Another "if" excercise</h2> 
+  {% if "Emil" in mymembersfnlist %}
+    <li>Emil here</li> 
+  {% else %}
+    <li>No such member</li>
+  {% endif %}
   
   {% include 'footer.html' %} 
 {% endblock %}
