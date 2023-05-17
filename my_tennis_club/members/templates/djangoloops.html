@@ -52,6 +52,12 @@
   {% else %}
     <li>No such member</li>
   {% endif %}
+
+  {% if "Roger" not in mymembersfnlist %}
+    <li>Roger isn't here</li> 
+  {% else %}
+    <li>Roger is here! Good boy!</li>
+  {% endif %}
   
   {% include 'footer.html' %} 
 {% endblock %}
