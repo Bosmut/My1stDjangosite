@@ -1,0 +1,40 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Excercises with loops in Django
+{% endblock %}
+
+
+{% block content %}
+  <p><a href="/">HOME</a></p>
+  <h1>Excercises with loops in Django</h1>
+  <h2>Usual for loop</h2>
+  {% for x in mymembers %}
+  <li>{{ x.id }}
+    {{ x.firstname }}
+    {{ x.lastname }}
+  </li>
+  {% empty %}
+    <li>No members</li>
+  {% endfor %}
+  
+  <h2>Usual reversed for loop</h2>
+  {% for x in mymembers reversed %}
+  <li>{{ x.id }}
+    {{ x.firstname }}
+    {{ x.lastname }}
+  </li>
+  {% empty %}
+    <li>No member</li>
+  {% endfor %}
+
+  <h2>Empty excercise</h2>
+  {% for x in mymember %}
+  {% empty %}
+    <li>No member</li>
+  {% endfor %}
+
+
+  
+  {% include 'footer.html' %} 
+{% endblock %}

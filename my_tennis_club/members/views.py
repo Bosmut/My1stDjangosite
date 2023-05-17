@@ -28,3 +28,11 @@ def testing(request):
       'fruits': ['Apple', 'Banana', 'Cherry'],   
     }
     return HttpResponse(template.render(context, request))
+
+def forloops(request):
+    template = loader.get_template('djangoloops.html')
+    mymembers = Member.objects.all().values()
+    context = {
+        'mymembers': mymembers
+    }
+    return HttpResponse(template.render(context, request))
