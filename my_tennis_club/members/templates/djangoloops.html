@@ -1,12 +1,62 @@
 {% extends "master.html" %}
 
 {% block title %}
-  Excercises with loops in Django
+  Excercises with loops ad ifs in Django
 {% endblock %}
 
 
 {% block content %}
-  <p><a href="/">HOME</a></p>
+  <h1>Excercises with "ifs" in Django</h1>
+  <h2>"if" excercise</h2>
+  {% for x in mymembers %}
+    {% if x.firstname != "" %}
+      <li>{{ x.id }}
+        {{ x.firstname }}
+        {{ x.lastname }}
+      </li> 
+    {% else %}
+      <li>No member</li>
+    {% endif %} 
+  {% endfor %}
+  
+  <h2>Another "if" excercise</h2> 
+  {% if "Emil" in mymembersfnlist %}
+    <li>Emil here</li> 
+  {% else %}
+    <li>No such member</li>
+  {% endif %}
+  
+  {% if "Roger" not in mymembersfnlist %}
+    <li>Roger isn't here</li> 
+  {% else %}
+    <li>Roger is here! Good boy!</li>
+  {% endif %}
+  
+  <h2>"is" excercise</h2> 
+  <p>What happens if we use "is" on objects with the same values</p>
+  {% if x is y %}
+    <p>YES</p>
+  {% else %}
+    <p>NO</p>
+  {% endif %}
+  
+  <p>but what will happen if we add two variables which directs at the same object</p>
+  {% with var1=x var2=x %}
+  {% if var1 is var2 %}
+    <p>YES</p>
+  {% else %}
+    <p>NO</p>
+  {% endif %}
+  {% endwith %}
+  
+  <p>What happens if we use "==" on objects with the same values</p>
+  {% if x == y %}
+    <p>YES</p>
+  {% else %}
+    <p>NO</p>
+  {% endif %}
+
+  
   <h1>Excercises with loops in Django</h1>
   <h2>Usual for loop</h2>
   {% for x in mymembers %}
@@ -16,6 +66,11 @@
   </li>
   {% empty %}
     <li>No members</li>
+  {% endfor %}
+
+  <p> or we can show the same with another filling </p>
+  {% for x in mymembers %}
+  <li>{{ x }}</li>
   {% endfor %}
   
   <h2>Usual reversed for loop</h2>
@@ -34,44 +89,49 @@
     <li>No member</li>
   {% endfor %}
 
-  <h2>"if" excercise</h2>
+  <h2>"forloop.counter"</h2>
   {% for x in mymembers %}
-    {% if x.firstname != "" %}
-      <li>{{ x.id }}
-        {{ x.firstname }}
-        {{ x.lastname }}
-      </li> 
-    {% else %}
-      <li>No member</li>
-  {% endif %} 
+    <li>{{ forloop.counter }}</li>
+  {% endfor %}
+  
+  <h2>"forloop.counter0"</h2>
+    {% for x in mymembers %}
+      <li>{{ forloop.counter0 }}</li>
+    {% endfor %}
+
+  <h2>"forloop.first</h2>
+  {% for x in mymembers %}
+    <li
+      {% if forloop.first %}
+        style='background-color:lightblue;'
+      {% endif %}
+    >{{ x }}</li>
+  {% endfor %}
+  
+  <h2>"forloop.last"</h2>
+  {% for x in mymembers %}
+    <li
+      {% if forloop.last %}
+        style='background-color:lightblue;'
+      {% endif %}
+    >{{ x }}</li>
   {% endfor %}
 
-  <h2>Another "if" excercise</h2> 
-  {% if "Emil" in mymembersfnlist %}
-    <li>Emil here</li> 
-  {% else %}
-    <li>No such member</li>
-  {% endif %}
+  <h2>"forloop.revcounter"</h2>
+  {% for x in mymembers %}
+    <li>{{ forloop.revcounter }}</li>
+  {% endfor %}
 
-  {% if "Roger" not in mymembersfnlist %}
-    <li>Roger isn't here</li> 
-  {% else %}
-    <li>Roger is here! Good boy!</li>
-  {% endif %}
+  <h2>"forloop.revcounter0"</h2>
+  {% for x in mymembers %}
+    <li>{{ forloop.revcounter0 }}</li>
+  {% endfor %}
 
-  <h2>"is" excercise</h2> 
-  <p>What happens if we use "is" on objects with the same values</p>
-  {% if x is y %}
-    <p>YES</p>
-  {% else %}
-    <p>NO</p>
-  {% endif %}
-  <p>What happens if we use "==" on objects with the same values</p>
-  {% if x == y %}
-    <p>YES</p>
-  {% else %}
-    <p>NO</p>
-  {% endif %}
-  
-  {% include 'footer.html' %} 
+  <h2>Section with comments (you can admit that i'm pretty lazy and don't want to create another page for another excercise)
+  {#and that for oneline comments#} </h2>
+    {% comment "this was the original welcome message" %}
+      <h1>Welcome ladies and gentlemen</h1>
+    {% endcomment %}
+
+  {% include 'footer.html' with me="Kirill" sponsor="My generous yet not so big wallet" %} 
 {% endblock %}
