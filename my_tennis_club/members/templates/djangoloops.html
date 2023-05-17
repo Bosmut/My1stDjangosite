@@ -34,6 +34,18 @@
     <li>No member</li>
   {% endfor %}
 
+  <h2>"if" excercise</h2>
+  {% for x in mymembers %}
+    {% if x.firstname != "" %}
+      <li>{{ x.id }}
+        {{ x.firstname }}
+        {{ x.lastname }}
+      </li> 
+    {% else %}
+      <li>No member</li>
+  {% endif %} 
+  
+  {% endfor %}
 
   
   {% include 'footer.html' %} 
