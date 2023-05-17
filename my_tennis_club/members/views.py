@@ -36,7 +36,9 @@ def forloops(request):
     mymembersfnlist = [member['firstname'] for member in mymembers]
     context = {
         'mymembers': mymembers,
-        'mymembersfnlist': mymembersfnlist
+        'mymembersfnlist': mymembersfnlist,
+        'x': ['Apple', 'Banana', 'Cherry'], 
+        'y': ['Apple', 'Banana', 'Cherry'],
     }
     return HttpResponse(template.render(context, request))
 

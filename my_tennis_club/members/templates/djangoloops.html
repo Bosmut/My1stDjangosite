@@ -58,6 +58,20 @@
   {% else %}
     <li>Roger is here! Good boy!</li>
   {% endif %}
+
+  <h2>"is" excercise</h2> 
+  <p>What happens if we use "is" on objects with the same values</p>
+  {% if x is y %}
+    <p>YES</p>
+  {% else %}
+    <p>NO</p>
+  {% endif %}
+  <p>What happens if we use "==" on objects with the same values</p>
+  {% if x == y %}
+    <p>YES</p>
+  {% else %}
+    <p>NO</p>
+  {% endif %}
   
   {% include 'footer.html' %} 
 {% endblock %}
